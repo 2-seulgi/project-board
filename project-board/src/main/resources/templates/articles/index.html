@@ -5,7 +5,7 @@
     <title>게시판 페이지</title>
 </head>
     <body>
-        <header th:replace="~{header :: header}"></header>
+        <header th:replace="~{header :: main_header}"></header>
         <main>
             <form>
                 <label for="search-type" hidden>유형</label>
@@ -62,6 +62,6 @@
                 </table>
             </nav>
         </main>
-        <footer th:replace="~{footer :: footer}"> </footer>
+        <footer th:replace="~{footer :: main_footer}"> </footer>
     </body>
 </html>

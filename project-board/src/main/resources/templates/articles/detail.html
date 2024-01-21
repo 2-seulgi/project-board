@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 페이지</title>
+</head>
+    <body>
+        <header th:replace="~{header :: main_header}"></header>
+        <main>
+            <header>
+                <h1>첫번째 글</h1>
+            </header>
+            <aside>
+                <p><span>bien</span></p>
+                <p><a href="mailto:cooey12@gamil.com">cooey12@gamil.com</a></p>
+                <p><time> 2024-01-01 </time></p>
+                <p>#JAVA</p>
+            </aside>
+            <section>
+                <p>본문<br><br></p>
+                <div>
+                    <form>
+                        <label for="articleComment" hidden></label>
+                        <textarea id="articleComment" placeholder="댓글 쓰기..." rows="3"></textarea>
+                        <button type="submit">쓰기</button>
+                    </form>
+
+                    <ul>
+                        <li>
+                            <div>
+                                <time><small>2024-01-21</small></time>
+                                <strong>bien</strong>
+                                <p>
+                                    기존 댓글
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <nav>
+                    <a class="page-previous" href="#">이전글</a>
+                    <a class="page-next" href="#">다음글</a>
+                </nav>
+            </section>
+        </main>
+        <footer th:replace="~{footer :: main_footer}"> </footer>
+    </body>
+</html>
