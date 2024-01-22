@@ -19,7 +19,7 @@ class ArticleControllerTest {
     public ArticleControllerTest(@Autowired MockMvc mvc){
         this.mvc = mvc;
     }
-    @Disabled("구현 중")
+
     @DisplayName("[View][Get] 게시글 리스트(게시판) 페이지 - 정상호출")
     @Test
     public void givenNothing_whenRequestingArticlesView_thenReturnArticlesView() throws Exception {
