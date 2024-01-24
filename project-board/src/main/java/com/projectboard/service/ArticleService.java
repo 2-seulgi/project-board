@@ -2,6 +2,7 @@ package com.projectboard.service;
 
 import com.projectboard.domain.type.SearchType;
 import com.projectboard.dto.ArticleDto;
+import com.projectboard.dto.ArticleUpdateDto;
 import com.projectboard.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -27,4 +28,13 @@ public class ArticleService {
         return null;
     }
 
+    public void saveArticle(ArticleDto dto) {
+
+    }
+
+    public void updateArticle(long articleId, ArticleUpdateDto dto) {
+    }
+
+    public void deleteArticle(long articleId) {
+    }
 }
