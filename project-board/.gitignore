@@ -15,6 +15,9 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+# JPA buddy
+.jpb/
+
 # AWS User-specific
 .idea/**/aws.xml
 
