@@ -10,30 +10,30 @@ import java.util.Objects;
 
 @Getter
 @ToString
-// index는 검색 조건에는 걸어주는게 좋음{
 @Table(indexes = {
         @Index(columnList = "content"),
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
 @Entity
-public class ArticleComment extends AuditingFields{
+public class ArticleComment extends AuditingFields {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter @ManyToOne(optional = false) private Article Article; // 게시글 아이디
-    @Setter @Column(nullable = false, length = 500) private String content; //본문
-    protected ArticleComment() {
+    @Setter @ManyToOne(optional = false) private Article article; // 게시글 (ID)
+    @Setter @Column(nullable = false, length = 500) private String content; // 본문
 
-    }
 
-    private ArticleComment(com.projectboard.domain.Article article, String content) {
-        Article = article;
+    protected ArticleComment() {}
+
+    private ArticleComment(Article article, String content) {
+        this.article = article;
         this.content = content;
     }
 
-    public static ArticleComment of(Article article, String content){
+    public static ArticleComment of(Article article, String content) {
         return new ArticleComment(article, content);
     }
 

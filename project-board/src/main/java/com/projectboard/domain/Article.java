@@ -31,7 +31,7 @@ public class Article extends AuditingFields{
 
     @ToString.Exclude
     @OrderBy("id")
-    @OneToMany(mappedBy = "Article", cascade = CascadeType.ALL )
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL )
     // 순환 참조 문제 발생 할 수 있어서 처리
     Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
