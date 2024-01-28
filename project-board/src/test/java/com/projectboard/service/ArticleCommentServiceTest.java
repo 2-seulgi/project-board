@@ -3,7 +3,6 @@ package com.projectboard.service;
 import com.projectboard.domain.Article;
 import com.projectboard.domain.ArticleComment;
 import com.projectboard.dto.ArticleCommentDto;
-import com.projectboard.dto.ArticleUpdateDto;
 import com.projectboard.repository.ArticleCommentRepository;
 import com.projectboard.repository.ArticleRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +18,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
@@ -80,7 +78,7 @@ class ArticleCommentServiceTest {
 
     @DisplayName("댓글 ID를 입력하면, 게시글을 삭제한다.")
     @Test
-    void givenArticleCommetnId_whenDeletingArticleComment_thenDeletesArticleComment(){
+    void givenArticleCommentId_whenDeletingArticleComment_thenDeletesArticleComment(){
 
         // Given
         BDDMockito.willDoNothing().given(articleCommentRepository).delete(any(ArticleComment.class));
