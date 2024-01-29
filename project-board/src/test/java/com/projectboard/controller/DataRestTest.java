@@ -101,3 +101,4 @@ public class DataRestTest {
         mvc.perform(head("/api/userAccounts")).andExpect(status().isNotFound());
     }
 }
+

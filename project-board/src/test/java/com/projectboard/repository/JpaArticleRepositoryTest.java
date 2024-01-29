@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.*;
 @DisplayName("JPA 연결 테스트")
 @Import(JpaConfig.class)
 @DataJpaTest
-
 class JpaArticleRepositoryTest {
 
     private final ArticleRepository articleRepository;
