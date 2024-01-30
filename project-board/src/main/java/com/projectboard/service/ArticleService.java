@@ -20,16 +20,16 @@ public class ArticleService {
     private final ArticleRepository articleRepository;
 
     @Transactional(readOnly = true)
-    public Page<ArticleDto> searchArticles(SearchType searchType, String searchKeyword) {
+    public Page<ArticleDto> searchArticles(SearchType title, String search_keyword) {
         return Page.empty();
     }
+
     @Transactional(readOnly = true)
     public ArticleDto searchArticle(long l) {
         return null;
     }
 
     public void saveArticle(ArticleDto dto) {
-
     }
 
     public void updateArticle(long articleId, ArticleUpdateDto dto) {
