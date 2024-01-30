@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Getter
-@ToString
+@ToString(callSuper = true)
 // index는 검색 조건에는 걸어주는게 좋음{
 @Table(indexes = {
         @Index(columnList = "title"),
@@ -24,6 +24,8 @@ public class Article extends AuditingFields{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter @ManyToOne(optional = false) private UserAccount userAccount; // 유저 정보 (ID)
+
     @Setter @Column(nullable = false) private String title; //제목
     @Setter @Column(nullable = false, length = 10000) private String content; // 본문
 
@@ -33,20 +35,21 @@ public class Article extends AuditingFields{
     @OrderBy("id")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL )
     // 순환 참조 문제 발생 할 수 있어서 처리
-    Set<ArticleComment> articleComments = new LinkedHashSet<>();
+    private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
     protected Article() {
 
     }
 
-    private Article(String title, String content, String hashtag) {
+    private Article(UserAccount userAccount, String title, String content, String hashtag) {
+        this.userAccount = userAccount;
         this.title = title;
         this.content = content;
         this.hashtag = hashtag;
     }
 
-    public static Article of(String title, String content, String hashtag) {
-        return new Article(title, content, hashtag);
+    public static Article of(UserAccount userAccount, String title, String content, String hashtag) {
+        return new Article(userAccount, title, content, hashtag);
     }
 
     @Override
