@@ -8,32 +8,23 @@
 </head>
     <body>
         <header th:replace="~{header :: main_header}"></header>
-        <main class="container">
-            <header id="article-header" class="py-5 text-center">
-                <h1>첫번째 글</h1>
+        <main id ="article-main" class="container" th:object="${article}">
+            <header id="article-header" class="py-5 text-center" >
+                <h1 th:text="*{title}">제목</h1>
             </header>
             <div class="row g-5">
                 <section class="col-md-3 col-lg-4 order-md-last">
                     <aside>
-                        <p><span class="nick-name" id="nickname">bine</span></p>
-                        <p><a class="u-url" rel="me" id="email" href="mailto:bien@mail.com">bien@mail.com</a></p>
-                        <p><time id="created-at" datetime="2022-01-01T00:00:00">2024-01-01</time></p>
-                        <p><span id="hashtag" class="badge text-bg-secondary mx-1"><a class="text-reset">#java</a></span></p>
+                        <p><span class="nick-name" id="nickname" th:text="*{nickname}">bine</span></p>
+                        <p><a class="u-url" rel="me" id="email" href="mailto:bien@mail.com" th:text="*{email}">bien@mail.com</a></p>
+                        <p><time id="created-at" datetime="2022-01-01T00:00:00" th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm:ss')}">2024-01-01</time></p>
+                        <p><span id="hashtag" class="badge text-bg-secondary mx-1" th:text="*{hashtag}"><a class="text-reset">#java</a></span></p>
                     </aside>
                 </section>
-                <article id="article-content" class="col-md-7 col-lg-8">
+                <article id="article-content" class="col-md-7 col-lg-8" th:text="*{content}">
                     <pre>본문<br></pre>
                 </article>
             </div>
-
-          <!--  <div class="row g-5" id="article-buttons">
-                <form id="delete-article-form">
-                    <div class="pb-5 d-grid gap-2 d-md-block">
-                        <a class="btn btn-success me-md-2" role="button" id="update-article">수정</a>
-                        <button class="btn btn-danger me-md-2" type="submit">삭제</button>
-                    </div>
-                </form>
-            </div>-->
 
             <div class="row g-5">
                 <section>
@@ -49,24 +40,14 @@
                         </div>
                     </form>
 
-                    <ul class="row col-7">
-                        <li>
+                    <ul id="article-contents" class="row col-7">
+                        <li  th:each="articleComment : ${article.articleCommentResponses}">
                             <div>
-                                <strong>Uno</strong>
-                                <small><time>2022-01-01</time></small>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-                                    Lorem ipsum dolor sit amet
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <strong>Uno</strong>
-                                <small><time>2022-01-01</time></small>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-                                    Lorem ipsum dolor sit amet
+                                <strong th:text="${articleComment.nickname}">Uno</strong>
+                                <small><time th:datetime="${articleComment.createdAt}"
+                                th:text="${#temporals.format(articleComment.createdAt, 'yyyy-MM-dd HH:mm:ss')}"></time></small>
+                                <p th:text="${articleComment.content}">
+
                                 </p>
                             </div>
                         </li>
