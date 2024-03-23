@@ -1,5 +1,6 @@
 package com.projectboard.controller;
 
+import com.projectboard.domain.type.FormStatus;
 import com.projectboard.domain.type.SearchType;
 import com.projectboard.dto.response.ArticleResponse;
 import com.projectboard.dto.response.ArticleWithCommentsResponse;
@@ -11,10 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.data.domain.Pageable;
 import java.util.List;
@@ -44,7 +42,7 @@ public class ArticleController {
 
     @GetMapping("/{articleId}")
     public String article(@PathVariable (name = "articleId" )long articleId, ModelMap map){
-        ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticle(articleId));
+        ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticleWithComments(articleId));
         map.addAttribute("article", article);
         return "articles/detail";
     }
@@ -66,5 +64,14 @@ public class ArticleController {
 
         return "articles/search-hashtag";
     }
+
+    @GetMapping("/form")
+    public String articleForm(ModelMap map) {
+        map.addAttribute("formStatus", FormStatus.CREATE);
+
+        return "articles/form";
+    }
+
+
 }
 
