@@ -2,6 +2,7 @@ package com.projectboard.domain.type;
 
 import lombok.Getter;
 
+@Getter
 public enum SearchType {
     TITLE("제목"),
     CONTENT("본문"),
@@ -13,5 +14,5 @@ public enum SearchType {
         this.description = description;
     }
 
-    @Getter private final String description;
+    private final String description;
 }

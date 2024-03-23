@@ -120,7 +120,7 @@ class ArticleControllerTest {
     public void givenNothing_whenRequestingArticleView_thenReturnArticleView() throws Exception {
         // Given
         Long articleId = 1L;
-        given(articleService.getArticle(articleId)).willReturn(createArticleWithCommentsDto());
+        given(articleService.getArticleWithComments(articleId)).willReturn(createArticleWithCommentsDto());
 
         // When & Then
         mvc.perform(get("/articles/1"))
